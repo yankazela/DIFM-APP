@@ -1,0 +1,42 @@
+.login-card-purple {
+  background: linear-gradient(145deg, #673AB7, #9C27B0);
+}
+
+.login-card-yellow {
+  background: linear-gradient(145deg, #FFC107, #FFEB3B);
+}
+
+.login-card-light {
+  background: linear-gradient(145deg, #eee, #fff);
+}
+
+.login-dark {
+  background: linear-gradient(145deg, #575b5d, #252b2d);
+}
+
+.login-blue {
+  background: linear-gradient(145deg, #2196F3, #3F51B5);
+}
+
+.login-purple-pink {
+  background: linear-gradient(145deg, #3F51B5, #E91E63);
+}
+
+.login-box {
+  margin-left: 35%;
+  margin-top: 3%;
+}
+
+/* .loader 
+{
+    width: calc(100% - 0px);
+	height: calc(100% - 0px);
+	border: 15px solid #48545F;
+	border-top: 15px solid #30FF06;
+	border-radius: 50%;
+	animation: rotate 1.5s linear infinite;
+} */
+
+body {
+  font-size: 13px;
+}

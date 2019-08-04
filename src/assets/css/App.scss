@@ -1,0 +1,998 @@
+// Imports
+@import 'framework/_mixin';
+
+// General
+*,
+*:before,
+*:after,
+*::before,
+*::after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    @include rem('font-size', 16);
+	background: $bgcolor;
+    color: $default;
+    font-family: $open;
+    line-height: 1.4;
+    padding-top: 94px;
+}
+
+a {
+    text-decoration: none;
+    color: $default;
+    @include trans();
+    &:hover {
+        color: $red;
+    }
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    margin: auto;
+    display: block;
+}
+
+strong {
+    font-weight: 700;
+}
+
+.g-recaptcha {
+    display: none;
+}
+
+
+// Headers
+h1, h2, h3, h4, h5, h6 {
+    @include font($robotoCon);
+    margin: 0;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+h2 {
+    text-transform: uppercase;
+    @include rem('font-size', 20);
+    margin-bottom: 20px;
+}
+
+h3 {
+    @include rem('font-size', 16);
+    margin-bottom: 20px;
+}
+
+// Grid
+.wrapper {
+    background: $white;
+    padding: 20px;
+    @include clearfix;
+}
+
+.center-text {
+    text-align: center;
+}
+
+.button-xsmall {
+    font-size: 120%;
+    width: 50
+}
+// Buttons
+.btn {
+    border: 0 none;
+    display: block;
+    color: $white;
+    border-radius: 3px;
+    width: 100%;
+    cursor: pointer;
+    padding: 10px;
+    margin: 10px 0;
+    text-transform: uppercase;
+    @include font($robotoCon);
+    @include trans;
+    text-align: center;
+    clear: both;
+    @media screen and (min-width: 768px) {
+        width: calc((100% - 40px) / 3);
+        margin: auto;
+    }
+    &:hover {
+        color: $white;
+    }
+    &.blue {
+        background: $mblue;
+        &:hover {
+            background: darken($mblue, 10%);
+        }
+    }
+    &.red {
+        background: $red;
+        &:hover {
+            background: darken($red, 10%);
+        }
+    }
+}
+
+// Header
+header {
+	background: #FFF;
+    padding: 20px;
+    @include clearfix;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 20;
+    .wrapper {
+        padding: 0;
+        position: relative;
+        max-width: 1200px;
+        width: 100%;
+        margin: auto;
+    }
+    .logo {
+        float: left;
+        + img {
+            float: left;
+        }
+    }
+    svg {
+        right: 0;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        position: absolute;
+        @include center(y);
+        &:hover {
+            fill: $red;
+        }
+    }
+}
+
+// Nav
+nav {
+    ul, li {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+    li {
+        border-bottom: 1px solid #3a3f40;
+    }
+    a {
+        color: $white;
+        display: block;
+        padding: 15px 20px;
+        &:hover {
+            color: $ltgrey;
+        }
+    }
+}
+
+// Main
+main {
+    position: relative;
+    max-width: 970px;
+    width: 100%;
+    margin: auto;
+    @include clearfix;
+    z-index: 10;
+}
+
+// Adverts
+.advert {
+    > div {
+        padding: 20px 0;
+        text-align: center;
+        clear: both;
+        @include clearfix;
+        overflow: hidden;
+    }
+}
+
+.ad-wallpaper {
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    div, iframe {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+}
+
+// Get Alerts
+.myapp-alerts {
+    margin-left: 35%;
+    h2 {
+        margin-bottom: 20px;
+    }
+    input[type='text'], input[type='email'], input[type='tel'], input[type='password'], button {
+        width: 300px;
+        height: 35px;
+        border: 1px solid $border;
+        padding: 10px;
+        border-radius: 3px;
+        display: block;
+        margin: 0;
+        margin-bottom: 10px;
+        &:hover, &:focus {
+            border-color: $red;
+        }
+    }
+     button {
+        width: 100px;
+        height: auto;
+        border: 1px solid $border;
+        padding: 10px;
+        border-radius: 3px;
+        display: inline;
+        margin: 0;
+        margin-bottom: 10px;
+        margin-left: 90px;
+        margin-top: 25px;
+        &:hover, &:focus {
+            border-color: $red;
+        }
+    }
+    .location {
+        display: inline-block;
+        @media screen and (min-width: 768px) {
+            width: 50%;
+        }
+        padding: 10px 0;
+        label, input {
+            display: inline-block;
+        }
+        input {
+            width: 20px;
+        }
+        label {
+            margin-left: 10px;
+        }
+    }
+    input[type='checkbox'] {
+        width: 20px;
+        float: left;
+        margin-top: 5px;
+        & + label {
+            margin-left: 10px;
+            float: left;
+            width: calc(100% - 30px);
+            margin-bottom: 10px;
+        }
+    }
+}
+
+// Social Icons
+.social-icons {
+    @include clearfix;
+    margin: 20px 0;
+    text-align: center;
+    clear: both;
+    text-transform: uppercase;
+    h3 {
+        @include rem('font-size', 20);
+        display: inline-block;
+        margin: 0;
+        margin-right: 20px;
+        vertical-align: middle;
+    }
+    a {
+        display: inline-block;
+        margin-right: 10px;
+        vertical-align: middle;
+    }
+    img {
+        width: 36px;
+        height: 36px;
+        vertical-align: middle;
+    }
+    &.share {
+        h3 {
+            display: block;
+            margin-bottom: 20px;
+        }
+    }
+}
+
+// National Pass Rate
+.national-pass {
+    margin-top: 10px;
+    text-align: center;
+    // @media screen and (min-width: 768px) {
+    //     margin-top: 0px;
+    //     width: calc((100% - 20px) / 2);
+    //     float: left;
+    // }
+}
+
+// Matric Advice
+.myapp-advice {
+    text-align: center;
+    .advice-btn {
+        text-align: center;
+        display: block;
+        width: calc((100% - 20px) / 2);
+        padding: 20px;
+        float: left;
+        border-radius: 3px;
+        color: $white;
+        margin-right: 20px;
+        // margin-bottom: 20px;
+        text-transform: uppercase;
+        @include font($robotoCon);
+        &:nth-of-type(2n) {
+            margin-right: 0;
+        }
+        // @media screen and (min-width: 768px) {
+        //     width: calc((100% - 40px) / 3);
+        //     &:nth-of-type(2n) {
+        //         margin-right: 20px;
+        //     }
+        //     &:nth-of-type(3n) {
+        //         margin-right: 0;
+        //     }
+        // }
+        svg, img {
+            fill: $white;
+            margin-bottom: 20px;
+            max-width: 60px;
+        }
+        &.blue {
+            background: $mblue;
+            &:hover {
+                background: darken($mblue, 10%);
+            }
+        }
+        &.pink {
+            background: $mpink;
+            &:hover {
+                background: darken($mpink, 10%);
+            }
+        }
+        &.yellow {
+            background: $myellow;
+            &:hover {
+                background: darken($myellow, 10%);
+            }
+        }
+        &.egg {
+            background: $megg;
+            &:hover {
+                background: darken($megg, 10%);
+            }
+        }
+        &.grey {
+            background: $mgrey;
+            &:hover {
+                background: darken($mgrey, 10%);
+            }
+        }
+    }
+}
+
+// Articles
+.articles {
+    h2 {
+        text-align: center;
+    }
+    .article-image {
+        float: left;
+        width: 30%;
+        margin-right: 15px;
+    }
+    article {
+        @include clearfix;
+        border-bottom: 1px solid #EDEDED;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+        @media screen and (min-width: 768px) {
+            float: left;
+            width: calc((100% - 40px) / 3);
+            margin-right: 20px;
+            &:nth-of-type(3n) {
+                margin-right: 0;
+            }
+            &:nth-of-type(3n+1) {
+                clear: left;
+            }
+        }
+        a {
+            display: block;
+            @include clearfix;
+        }
+        .content {
+            float: left;
+            width: calc(100% - 15px - 30%);
+        }
+        small {
+            @include rem('font-size', 12);
+            color: $ltgrey;
+        }
+        h3 {
+            margin-bottom: 5px;
+        }
+        p {
+            margin: 0;
+        }
+        .article-img {
+            margin: 20px auto;
+        }
+    }
+}
+
+.article-advert {
+    margin: 20px -10px;
+    @media screen and (min-width: 768px) {
+        float: right;
+        margin: 20px 0 20px 20px;
+    }
+}
+
+// Footer
+footer {
+    text-align: center;
+    @include rem('font-size', 12);
+    color: #9B9B9B;
+    position: relative;
+    z-index: 100;
+    max-width: 970px;
+    width: 100%;
+    margin: auto;
+    a {
+        color: #9B9B9B;
+        &:hover {
+            color: $red;
+        }
+    }
+    p {
+        margin: 0;
+    }
+    .copyright {
+        background: #EDEDED;
+        color: $default;
+    }
+}
+
+// Drawer
+header, main, footer {
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+    @include trans();
+    &.drawer-open {
+        -webkit-transform: translateX(-260px);
+        -moz-transform: translateX(-260px);
+        -ms-transform: translateX(-260px);
+        -o-transform: translateX(-260px);
+        transform: translateX(-260px);
+        @include trans();
+    }
+}
+#sidedrawer {
+    position: fixed;
+    top: 0;
+    right: -260px;
+    height: 100%;
+    width: 260px;
+    background: #2e3233;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    z-index: 1;
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-transform: translateX(100%);
+    -moz-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    -o-transform: translateX(100%);
+    transform: translateX(100%);
+    @include trans();
+    &.drawer-open {
+        -webkit-transform: initial;
+        -moz-transform: initial;
+        -ms-transform: initial;
+        -o-transform: initial;
+        transform: initial;
+        right: 0;
+        @include trans();
+    }
+}
+
+// Matric Newsletter
+.myapp-newsletter {
+    background: url('') no-repeat top center;
+    background-size: cover;
+    clear: both;
+    padding: 20px;
+    position: relative;
+    display: grid;
+    grid-gap: 20px;
+    justify-content: center;
+    align-items: center;
+    @media screen and (min-width: 768px) {
+        grid-template-columns: repeat(2, 50%);
+    }
+    &::before {
+        content: '';
+        @include linearGradient(rgba(255,255,255,.4), rgba(255,255,255,.8));
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 1;
+    }
+    > div {
+        position: relative;
+        z-index: 10;
+        &:first-of-type {
+            text-align: center;
+            h1 {
+                @include rem('font-size', 42);
+                color: $red;
+                margin-bottom: 20px;
+                // text-shadow: 0 2px 5px rgba(0,0,0,.6), 0 0 0 rgba(255,255,255,1);
+                font-weight: 700;
+                text-transform: uppercase;
+            }
+            @media screen and (min-width: 768px) {
+                padding: 20px 40px;
+            }
+            @media screen and (min-width: 768px) {
+                h2 {
+                    @include rem('font-size', 36);
+                    font-weight: 700;
+                }
+                h3 {
+                    @include rem('font-size', 24);
+                }
+            }
+            @media screen and (max-width: 767px) {
+                h2 {
+                    @include rem('font-size', 32);
+                    font-weight: 700;
+                }
+                h3 {
+                    @include rem('font-size', 20);
+                }
+            }
+        }
+        &:last-of-type {
+            background: rgba(255,255,255,.65);
+            padding: 20px;
+            @media screen and (min-width: 768px) {
+                margin-right: 20px;
+            }
+            h2 {
+                @include rem('font-size', 36);
+                text-align: center;
+                margin-bottom: 5px;
+            }
+        }
+    }
+}
+
+.step-out {
+    .logos img {
+        display: inline-block;
+        max-height: 30px;
+        &:first-of-type {
+            margin-right: 20px;
+        }
+    }
+    @media screen and (max-width: 767px) {
+        margin-bottom: 20px;
+    }
+}
+
+// Matric Results
+.pass-rate-inner {
+    text-align: center;
+    position: relative;
+    @media screen and (min-width: 768px) {
+        display: -webkit-flex;
+        display: -ms-flex;
+        display: flex;
+        align-items: center;
+    	justify-content: center;
+    }
+}
+
+$configs: (
+    /* HIGHER CERTIFICATE */
+	chart-one: (
+		svgSize: 200px,
+		percentage: 22,
+		strokeWidth: 20px,
+		backgroundColor: $bgcolor,
+		foregroundColor: #1446A0,
+		labelColor: $default,
+		labelFontSize: 2.5rem,
+		duration: 2s,
+		animationDelay: .5s
+	),
+    /* DIMPLOMA PASS */
+	chart-two: (
+		svgSize: 200px,
+		percentage: 40,
+		strokeWidth: 20px,
+		backgroundColor: $bgcolor,
+		foregroundColor: #DB3069,
+		labelColor: $default,
+		labelFontSize: 2.5rem,
+		duration: 2s,
+		animationDelay: .5s
+	),
+    /* BA PASS */
+	chart-three: (
+		svgSize: 200px,
+		percentage: 36,
+		strokeWidth: 20px,
+		backgroundColor: $bgcolor,
+		foregroundColor: #F5D547,
+		labelColor: $default,
+		labelFontSize: 2.5rem,
+		duration: 2s,
+		animationDelay: .5s
+	)
+);
+
+
+/* ------- DO NOT EDIT --------- */
+$pi: 3.14;
+$labelData: '';
+@for $i from 0 to 101 {
+	$labelData: $labelData + $i + '%' + '\a';
+}
+
+@each $chart, $param in $configs {
+
+	$c: (map-get($param, svgSize) - map-get($param, strokeWidth)) * $pi;
+	$cOffSet: (map-get($param, percentage)/100)*$c;
+
+	.#{$chart} {
+		width: map-get($param, svgSize);
+		height: map-get($param, svgSize);
+		svg {
+			width: 100%;
+			height: 100%;
+			.circle-background {
+				r: (map-get($param, svgSize) - map-get($param, strokeWidth))/2;
+				cx: 50%;
+				cy: 50%;
+				fill: none;
+				stroke: map-get($param, backgroundColor);
+				stroke-width: map-get($param, strokeWidth);
+			}
+			.circle-foreground {
+				@extend .circle-background;
+				stroke: map-get($param, foregroundColor);
+				stroke-dasharray: $cOffSet $c;
+				stroke-dashoffset: $cOffSet;
+				stroke-linecap: round;
+				transform-origin: 50% 50%;
+				transform: rotate(-90deg);
+				animation: offset map-get($param, duration) ease-in-out forwards;
+				animation-delay: map-get($param, animationDelay);
+			}
+		}
+		/* label */
+		position: relative;
+		.label {
+			display: inline-block;
+			width: 100%;
+			height: map-get($param, labelFontSize);
+			overflow: hidden;
+			text-align: center;
+			color: map-get($param, labelColor);
+			position: absolute;
+			top: calc(50% - #{map-get($param, labelFontSize)/2});
+			left: 0;
+			font-size: 0;
+			&:after {
+				display: inline-block;
+				content: $labelData;
+				white-space: pre;
+				font-size: map-get($param, labelFontSize);
+				line-height: map-get($param, labelFontSize);
+				animation: #{$chart}-label map-get($param, duration) steps(map-get($param, percentage)) forwards;
+				animation-delay: map-get($param, animationDelay);
+			}
+		}
+	}
+	@keyframes #{$chart}-label {
+		100% {
+			transform: translateY(map-get($param, labelFontSize) * (-(map-get($param, percentage))));
+		}
+	}
+}
+@keyframes offset {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.label {
+    @include font($robotoCon);
+}
+
+.pass-type {
+    @include font($robotoCon);
+    @include rem('font-size', 20);
+    text-transform: uppercase;
+    padding-top: 10px;
+    display: block;
+}
+
+.chart-one, .chart-two {
+    margin: auto;
+    margin-bottom: 50px;
+    @media screen and (min-width: 768px) {
+        margin-right: 20px;
+    }
+}
+
+.chart-three {
+    margin: auto;
+    margin-bottom: 50px;
+}
+
+// Matric Provincial Performance
+.prov-performance {
+    margin-top: 10px;
+    h2 {
+        text-align: center;
+    }
+    .province {
+        width: 100%;
+        padding: 20px;
+        display: grid;
+        grid-template-columns: calc((100% - 60px) / 2) 60px calc((100% - 60px) / 2);
+        align-items: center;
+        border-bottom: 1px solid #EDEDED;
+        @media screen and (min-width: 768px) {
+            width: calc((100% - 20px) / 2);
+            float: left;
+            margin-right: 20px;
+            &:nth-of-type(2n) {
+                margin-right: 0;
+            }
+        }
+        p {
+            margin: 0;
+            @include font($robotoCon);
+            text-transform: uppercase;
+            @include rem('font-size', 20);
+            @media screen and (min-width: 768px) {
+                margin-right: 20px;
+            }
+        }
+    }
+}
+
+// Provincial Results
+.province-hero {
+    text-align: center;
+    h2 {
+        @include rem('font-size', 14);
+    }
+    h3 {
+        @include rem('font-size', 48);
+        margin-bottom: 0;
+    }
+    p {
+        @include rem('font-size', 14);
+        margin: 0;
+    }
+    a {
+        color: $red;
+        text-decoration: underline;
+    }
+}
+
+.province-res-graph {
+    margin-top: 20px;
+    text-align: center;
+    svg {
+        margin: auto;
+    }
+}
+
+// Legend
+.prov-graph-legend {
+    text-align: center;
+    p {
+        display: inline-block;
+        @include rem('font-size', 14);
+        vertical-align: middle;
+        margin: 0;
+        @include font($robotoCon);
+        text-transform: uppercase;
+        span {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin: 20px 10px;
+            border: 1px solid #EDEDED;
+            vertical-align: middle;
+        }
+        &:first-of-type span {
+            background: #1446A0;
+        }
+        &:nth-of-type(2) span {
+            background: #DB3069;
+        }
+        &:nth-of-type(3) span {
+            background: #F5D547;
+        }
+        &:nth-of-type(4) span {
+            background: #EBEBD3;
+        }
+        &:nth-of-type(5) span {
+            background: #2E2E2D;
+        }
+    }
+}
+
+.pie-chart-label {
+    fill: #FFF;
+    &:first-of-type {
+        transform: translate(20, -20) !important;
+    }
+    &:nth-of-type(2) {
+        transform: translate(20, 20) !important;
+    }
+    &:nth-of-type(3) {
+        transform: translate(-25, 0) !important;
+    }
+}
+
+// Individual Results
+.indv-hero {
+    text-align: center;
+    h1 {
+        &:after {
+            content: '';
+            display: block;
+            background: url('') no-repeat bottom center;
+            height: 36px;
+            vertical-align: middle;
+        }
+    }
+    h2 {
+        margin: 0;
+    }
+    h3 {
+        @include rem('font-size', 28);
+        margin: 0;
+        text-transform: uppercase;
+    }
+    p {
+        @include rem('font-size', 18);
+        margin-bottom: 0;
+    }
+    .indv-search {
+        @include rem('font-size', 12);
+        margin: 0;
+        margin-bottom: 20px;
+    }
+    a {
+        color: $red;
+        text-decoration: underline;
+    }
+}
+
+.top-subjects {
+    text-align: center;
+    ul, li {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+    li {
+        padding: 10px;
+        text-align: left;
+        @include rem('font-size', 18);
+        @media screen and (min-width: 768px) {
+            float: left;
+            width: 50%;
+            &:nth-of-type(2n) {
+                clear: right;
+            }
+        }
+        &:before {
+            content: "";
+            display: inline-block;
+            background: url('') no-repeat top left;
+            width: 38px;
+            height: 26px;
+            vertical-align: middle;
+        }
+    }
+}
+
+// Top Schools
+.top-schools {
+    text-align: center;
+    svg {
+        height: 350px;
+    }
+    .x.axis {
+        text {
+            transform: translateX(-39px) translateY(26px) rotate(-45deg);
+        }
+    }
+}
+
+.react-autosuggest__container {
+    position: relative;
+  }
+  
+  .react-autosuggest__input {
+    width: 240px;
+    height: 30px;
+    padding: 10px 20px;
+    font-family: Helvetica, sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+  }
+  
+  .react-autosuggest__input--focused {
+    outline: none;
+  }
+  
+  .react-autosuggest__input--open {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  
+  .react-autosuggest__suggestions-container {
+    display: none;
+  }
+  
+  .react-autosuggest__suggestions-container--open {
+    display: block;
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    border: 1px solid #aaa;
+    background-color: #fff;
+    font-family: Helvetica, sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    z-index: 2;
+  }
+  
+  .react-autosuggest__suggestions-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+  
+  .react-autosuggest__suggestion {
+    cursor: pointer;
+    padding: 10px 20px;
+  }
+  
+  .react-autosuggest__suggestion--highlighted {
+    background-color: #ddd;
+  }
