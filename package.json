@@ -18,7 +18,7 @@
     "google-map-react": "^1.1.4",
     "google-maps": "^3.3.0",
     "import": "0.0.6",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.21",
     "material-ui": "^0.19.4",
     "muicss": "^0.9.41",
     "qs": "^6.7.0",
