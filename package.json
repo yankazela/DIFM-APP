@@ -23,7 +23,7 @@
     "muicss": "^0.9.41",
     "qs": "^6.7.0",
     "raf": "^3.4.0",
-    "razzle": "^0.8.14",
+    "razzle": "^4.2.18",
     "react": "^16.5.2",
     "react-autosuggest": "^9.4.2",
     "react-dom": "^16.5.2",
